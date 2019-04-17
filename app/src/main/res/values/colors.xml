@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPurpleButton">#c8a2c8</color>
+    <color name="colorPurpleActive">#775477</color>
     <color name="colorWhite">#FFF</color>
     <color name="colorErrorInvalid">#fe0000</color>
 </resources>
