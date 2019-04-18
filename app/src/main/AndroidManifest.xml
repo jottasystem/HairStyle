@@ -8,14 +8,17 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label=" "
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Register" android:parentActivityName=".MainActivity"></activity>
+        <activity android:parentActivityName=".SideBar" android:name=".DetailServices"></activity>
+        <activity
+            android:name=".Register"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".SideBar"
-            android:label="@string/title_activity_side_bar"
+            android:icon="@drawable/logopink"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -24,8 +27,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
     </application>
 
 </manifest>

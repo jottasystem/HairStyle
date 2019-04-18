@@ -12,16 +12,25 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
 
 public class SideBar extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+private FrameLayout frameLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_side_bar);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
+
+
+        frameLayout = findViewById(R.id.frameContainer);
+
+
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -40,6 +49,8 @@ public class SideBar extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
     }
 
     @Override
@@ -80,17 +91,16 @@ public class SideBar extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.detailCompany) {
+
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.myAccount) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.myAgend) {
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.myContact) {
 
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.idExitApp) {
 
         }
 
