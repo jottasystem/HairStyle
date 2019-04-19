@@ -9,17 +9,19 @@
         android:checkableBehavior="single">
         <item
             android:id="@+id/detailCompany"
-            android:title="Quem Somos" />
+            android:title="@string/quem_somos"
+            android:visible="false" />
         <item
             android:id="@+id/myAccount"
-            android:title="Minha Conta" />
+            android:title="@string/minha_conta"
+          />
         <item
             android:id="@+id/myAgend"
-            android:title="Minha Agenda" />
+            android:title="@string/minha_agenda" />
         <item
             android:state_checked="true" android:drawable="@color/colorWhite"
             android:id="@+id/contact"
-            android:title="Contato" />
+            android:title="@string/contato" />
     </group>
 
     <item

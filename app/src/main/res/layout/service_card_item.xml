@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="250dp"
+    android:background="@color/colorPurpleButton">
+
+
+    <ImageView
+        android:id="@+id/card_background_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/border_radius_item_list"
+        android:clickable="true"
+        android:contentDescription="TODO"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:shadowColor="@color/colorPurpleButton"
+        android:shadowDy="3"
+        android:shadowRadius="6"
+        android:textSize="30sp"
+        android:textColor="#ffffff"
+        android:lineSpacingExtra="28sp"
+        android:gravity="end"
+        app:layout_constraintBottom_toBottomOf="@+id/card_background_image"
+        app:layout_constraintEnd_toEndOf="@+id/card_background_image"
+        app:layout_constraintStart_toStartOf="@+id/card_background_image"
+        app:layout_constraintTop_toTopOf="@+id/card_background_image" />
+</android.support.constraint.ConstraintLayout>

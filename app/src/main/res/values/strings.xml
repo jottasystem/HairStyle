@@ -21,6 +21,11 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="quem_somos">Quem Somos</string>
+    <string name="minha_agenda">Minha Agenda</string>
+    <string name="contato">Contato</string>
+    <string name="minha_conta">Minha Conta</string>
+    <string name="sair">Sair</string>
 </resources>
 
 

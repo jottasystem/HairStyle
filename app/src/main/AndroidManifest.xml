@@ -12,7 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity   android:parentActivityName=".MainActivity" android:name=".NewPassword"></activity>
+        <activity android:name=".Core"></activity>
+        <activity
+            android:name=".NewPassword"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".Contact" />
         <activity
             android:name=".ForgotPassword"

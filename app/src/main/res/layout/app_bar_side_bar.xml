@@ -18,13 +18,27 @@
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            tools:visibility="visible">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/card_list"
+                android:layout_width="367dp"
+                android:layout_height="645dp"
+                android:layout_marginBottom="32dp"
+                android:background="@color/colorWhite"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.636"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+        </android.support.constraint.ConstraintLayout>
+
     </android.support.design.widget.AppBarLayout>
-
-<FrameLayout
-    android:id="@+id/frameContainer"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"></FrameLayout>
-
 
 
     <android.support.design.widget.FloatingActionButton
