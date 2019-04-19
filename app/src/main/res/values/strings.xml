@@ -6,6 +6,8 @@
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="action_settings">Settings</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
     <string name="detail_place">
         O Salão de Beleza Hair Style, oferece uma equipe formada por especialistas com o objetivo de proporcionar
         experiências inovadoras. Com uma
@@ -24,6 +26,7 @@
     <string name="quem_somos">Quem Somos</string>
     <string name="minha_agenda">Minha Agenda</string>
     <string name="contato">Contato</string>
+    <string name="avaliation">Avaliações</string>
     <string name="minha_conta">Minha Conta</string>
     <string name="sair">Sair</string>
 </resources>

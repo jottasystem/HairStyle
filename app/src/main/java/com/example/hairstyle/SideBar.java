@@ -24,7 +24,7 @@ import java.util.List;
 
 public class SideBar extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-private FrameLayout frameLayout;
+        private FrameLayout frameLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,10 +99,6 @@ private FrameLayout frameLayout;
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
         return super.onOptionsItemSelected(item);
     }
 

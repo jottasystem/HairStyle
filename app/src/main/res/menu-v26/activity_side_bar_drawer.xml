@@ -3,31 +3,4 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view"
-    >
-
-    <group
-        android:checkableBehavior="single">
-        <item
-            android:id="@+id/detailCompany"
-            android:title="@string/quem_somos"
-            android:visible="false" />
-        <item
-            android:id="@+id/myAccount"
-            android:title="@string/minha_conta"
-          />
-        <item
-            android:id="@+id/myAgend"
-            android:title="@string/minha_agenda" />
-        <item
-            android:state_checked="true" android:drawable="@color/colorWhite"
-            android:id="@+id/contact"
-            android:title="@string/contato" />
-    </group>
-
-    <item
-        android:id="@+id/idExitApp"
-        android:icon="@drawable/exitapp"
-        android:iconTint="@color/colorPurpleActive"
-        android:title="@string/sair" />
-
-</menu>
+    />
