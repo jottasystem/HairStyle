@@ -1,8 +1,10 @@
 package com.example.hairstyle;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 public class SideBar extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -24,13 +27,7 @@ private FrameLayout frameLayout;
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-
-
         frameLayout = findViewById(R.id.frameContainer);
-
-
-
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -91,17 +88,32 @@ private FrameLayout frameLayout;
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+
         if (id == R.id.detailCompany) {
+
 
             // Handle the camera action
         } else if (id == R.id.myAccount) {
 
+
+
         } else if (id == R.id.myAgend) {
 
-        } else if (id == R.id.myContact) {
+
+        } else if (id == R.id.contact) {
+
+
 
         } else if (id == R.id.idExitApp) {
 
+        /*    textExit = findViewById(R.id.idExitApp);
+            textExit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                    onResume();
+                }
+            }); */
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

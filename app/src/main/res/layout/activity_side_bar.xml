@@ -21,7 +21,10 @@
         android:background="@drawable/siderbarbackimage"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
+        app:itemTextColor="@color/colorPurpleActive"
         app:headerLayout="@layout/nav_header_side_bar"
-        app:menu="@menu/activity_side_bar_drawer" />
+        app:menu="@menu/activity_side_bar_drawer"
+        app:itemIconTint="@color/colorPurpleButton"
+        />
 
 </android.support.v4.widget.DrawerLayout>

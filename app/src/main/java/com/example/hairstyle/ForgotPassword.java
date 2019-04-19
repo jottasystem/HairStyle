@@ -4,14 +4,13 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class DetailServices extends AppCompatActivity {
+public class ForgotPassword extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail_services);
+        setContentView(R.layout.activity_forgot_password);
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Cadastro");
+        actionBar.setTitle("Esqueci minha senha");
     }
-
 }

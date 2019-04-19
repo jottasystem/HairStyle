@@ -5,9 +5,22 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string name="detail_place">
+        O Salão de Beleza Hair Style, oferece uma equipe formada por especialistas com o objetivo de proporcionar
+        experiências inovadoras. Com uma
+        grande variedade de serviços para
+        cabelo, rosto, mãos e pés. Contamos
+        também com uma infraestrutura que
+        proporciona conforto e bem-estar.
+    </string>
+
+
+    <string name="impact_detail_place">Hair Style, você brilha da cabeça aos pés</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
+
+

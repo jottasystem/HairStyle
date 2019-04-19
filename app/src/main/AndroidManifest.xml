@@ -12,7 +12,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:parentActivityName=".SideBar" android:name=".DetailServices"></activity>
+        <activity android:name=".Contact"></activity>
+        <activity
+            android:name=".ForgotPassword"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".DetailCompany" />
+        <activity
+            android:name=".RegisterUser"
+            android:parentActivityName=".SideBar" />
         <activity
             android:name=".Register"
             android:parentActivityName=".MainActivity" />

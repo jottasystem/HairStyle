@@ -5,7 +5,8 @@
     tools:showIn="navigation_view"
     >
 
-    <group   android:checkableBehavior="single">
+    <group
+        android:checkableBehavior="single">
         <item
             android:id="@+id/detailCompany"
             android:title="Quem Somos" />
@@ -16,13 +17,15 @@
             android:id="@+id/myAgend"
             android:title="Minha Agenda" />
         <item
-            android:id="@+id/myContact"
+            android:state_checked="true" android:drawable="@color/colorWhite"
+            android:id="@+id/contact"
             android:title="Contato" />
     </group>
 
     <item
         android:id="@+id/idExitApp"
         android:icon="@drawable/exitapp"
+        android:iconTint="@color/colorPurpleActive"
         android:title="Sair" />
 
 </menu>
