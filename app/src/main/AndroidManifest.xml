@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Contact"></activity>
+        <activity   android:parentActivityName=".MainActivity" android:name=".NewPassword"></activity>
+        <activity android:name=".Contact" />
         <activity
             android:name=".ForgotPassword"
             android:parentActivityName=".MainActivity" />
