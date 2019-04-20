@@ -8,8 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 public class MainActivity extends AppCompatActivity {
 
     private Button buttonLogin;
@@ -27,15 +25,23 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        login = (EditText) findViewById(R.id.idInputLogin);
-        password = (EditText) findViewById(R.id.idInputPassword);
+        login = (EditText) findViewById(R.id.id_input_login_main);
+        password = (EditText) findViewById(R.id.id_input_password);
+
 
         buttonLogin = findViewById(R.id.idButtonLogin);
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),Avaliation.class);
+
+
+                Intent intent = new Intent(getApplicationContext(),home.class);
+
+                System.out.println("LOGINNN"+login);
+                intent.putExtra("login",login.getText().toString());
+
                 startActivity(intent);
+
             }
         });
 

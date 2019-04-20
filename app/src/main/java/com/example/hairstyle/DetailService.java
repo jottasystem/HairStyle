@@ -1,5 +1,6 @@
 package com.example.hairstyle;
 
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -19,16 +20,14 @@ public class DetailService extends AppCompatActivity {
         ArrayList<String> arrayList  = new ArrayList<>();
 
         arrayList.add("VALOOOR AQUII ");
-
         arrayList.add("Precco ");
-
         arrayList.add("valor de 123  ");
-
         arrayList.add("outros valores AQUII ");
         arrayList.add("VALOOOR mais  ");
         arrayList.add("vem da API AQUII ");
 
-
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Serviços");
 
     }
 }

@@ -17,9 +17,7 @@
         proporciona conforto e bem-estar.
     </string>
 
-
     <string name="impact_detail_place">Hair Style, você brilha da cabeça aos pés</string>
-
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -31,6 +29,31 @@
     <string name="sair">Sair</string>
     <string name="nome_titular">Nome titular</string>
     <string name="comments">comments</string>
+    <string name="title_activity_testeeeeee">TESTEEEEEE</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+    <string name="title_activity_home">home</string>
+    <string name="services_item">Serviços</string>
+    <string name="compartilhar">Compartilhar</string>
+    <string name="img_place">img_place</string>
+    <string name="number_phone">(11) 0000-0000</string>
+    <string name="address_hair">R. das Flores, 00 - São Paulo</string>
+    <string name="todo">TODO</string>
+    <string name="redes_sociais">Redes Sociais:</string>
+    <string name="www_facebook_com_hairstyle">www.facebook.com/hairstyle/</string>
+    <string name="ufeff_hairstyle">instagram.com.br/@hairstyle</string>
+    <string name="facebook">facebook</string>
+    <string name="instagram">instagram</string>
+    <string name="nome_completo">Nome Completo</string>
+    <string name="login">Login</string>
+    <string name="salvar">SALVAR</string>
+    <string name="confirmar_senha">Confirmar Senha</string>
 </resources>
 
 

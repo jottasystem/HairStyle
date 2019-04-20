@@ -32,7 +32,8 @@
         android:layout_marginTop="52dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/phoneicon" />
+        app:srcCompat="@drawable/phoneicon"
+        android:contentDescription="@string/todo" />
 
     <ImageView
         android:id="@+id/imgPhoneCell"
@@ -43,7 +44,8 @@
         android:layout_marginTop="12dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgPhoneFix"
-        app:srcCompat="@drawable/phoneicon" />
+        app:srcCompat="@drawable/phoneicon"
+        android:contentDescription="@string/todo" />
 
 
     <ImageView
@@ -55,7 +57,8 @@
         android:layout_marginTop="12dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgPhoneCell"
-        app:srcCompat="@drawable/pointmap" />
+        app:srcCompat="@drawable/pointmap"
+        android:contentDescription="@string/todo" />
 
     <TextView
         android:id="@+id/textPhoneFix"
@@ -67,7 +70,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:lineSpacingExtra="2sp"
-        tools:text="(11) 0000-0000"
+        android:text="@string/number_phone"
         android:textColor="#775477"
         android:textSize="17sp"
         android:textStyle="bold"
@@ -86,7 +89,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:lineSpacingExtra="2sp"
-        tools:text="(11) 0000-0000"
+        android:text="@string/number_phone"
         android:textColor="#775477"
         android:textSize="17sp"
         android:textStyle="bold"
@@ -105,7 +108,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:lineSpacingExtra="2sp"
-        tools:text="R. das Flores, 00 - São Paulo"
+        android:text="@string/address_hair"
         android:textColor="#775477"
         android:textSize="17sp"
         android:textStyle="bold"
@@ -130,7 +133,7 @@
         app:layout_constraintHorizontal_bias="0.127"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textPointMap"
-        tools:text="Redes Sociais:" />
+        android:text="@string/redes_sociais" />
 
 
     <ImageView
@@ -143,7 +146,8 @@
         android:layout_marginTop="24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textNetworkSocial"
-        app:srcCompat="@drawable/instagram" />
+        app:srcCompat="@drawable/instagram"
+        android:contentDescription="@string/instagram" />
 
     <ImageView
         android:id="@+id/imgFacebook"
@@ -154,7 +158,8 @@
         android:layout_marginTop="12dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgInstagram"
-        app:srcCompat="@drawable/facebook" />
+        app:srcCompat="@drawable/facebook"
+        android:contentDescription="@string/facebook" />
 
     <TextView
         android:id="@+id/textInstagram"
@@ -172,7 +177,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imgInstagram"
         app:layout_constraintTop_toBottomOf="@+id/textNetworkSocial"
-        tools:text="\ufeff@hairstyle" />
+        android:text="@string/ufeff_hairstyle" />
 
     <TextView
         android:id="@+id/textFacebook"
@@ -190,7 +195,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imgFacebook"
         app:layout_constraintTop_toBottomOf="@+id/textInstagram"
-        tools:text="www.facebook.com/hairstyle/" />
+        android:text="@string/www_facebook_com_hairstyle" />
 
 
     <TextView

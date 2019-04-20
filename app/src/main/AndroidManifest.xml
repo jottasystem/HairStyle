@@ -4,7 +4,8 @@
     package="com.example.hairstyle">
 
     <dist:module dist:instant="true" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -13,17 +14,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:parentActivityName=".Core"  android:name=".Avaliation"/>
-        <activity android:name=".DetailService" />
-        <activity android:name=".Core" />
+        <activity
+            android:name=".home"
+            android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".Avaliation"
+            android:parentActivityName=".home" />
+        <activity  android:parentActivityName=".home" android:name=".DetailService" />
         <activity
             android:name=".NewPassword"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".Contact" />
+        <activity android:parentActivityName=".home" android:name=".Contact" />
         <activity
             android:name=".ForgotPassword"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".DetailCompany" />
+
+        <activity android:parentActivityName=".home"  android:name=".DetailCompany" />
         <activity
             android:name=".RegisterUser"
             android:parentActivityName=".MainActivity" />

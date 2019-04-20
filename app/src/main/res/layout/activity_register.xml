@@ -95,7 +95,7 @@
         app:layout_constraintTop_toBottomOf="@+id/idInputEmail" />
 
     <EditText
-        android:id="@+id/idInputLogin"
+        android:id="@+id/id_input_login_main"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -127,7 +127,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.023"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idInputLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/id_input_login_main" />
 
     <EditText
         android:id="@+id/idInputPassword"
