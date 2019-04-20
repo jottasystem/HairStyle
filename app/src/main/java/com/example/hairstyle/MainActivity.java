@@ -59,8 +59,5 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public  void  onClickLogin(View view){
-
-    }
 
 }
