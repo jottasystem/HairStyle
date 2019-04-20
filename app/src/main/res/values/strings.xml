@@ -29,6 +29,8 @@
     <string name="avaliation">Avaliações</string>
     <string name="minha_conta">Minha Conta</string>
     <string name="sair">Sair</string>
+    <string name="nome_titular">Nome titular</string>
+    <string name="comments">comments</string>
 </resources>
 
 

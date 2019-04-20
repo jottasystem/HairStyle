@@ -48,18 +48,13 @@ public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
     public void onBindViewHolder(@NonNull final myViewHolder myViewHolder, final int position) {
 
 
-
         myViewHolder.imgCard.setImageResource(mData.get(position).getImgCard());
         myViewHolder.title.setText(mData.get(position).getTitle());
-
-
-
-
 
         myViewHolder.imgCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//ACAO DO CLICK
+                //ACAO DO CLICK
                 System.out.println("CLIQUEI"+mData.get(position).getTitle());
 
 
