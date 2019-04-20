@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -16,11 +17,18 @@ public class MainActivity extends AppCompatActivity {
     TextView textRegisterClick;
     TextView textForgotPassword;
 
+    EditText login, password;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
+
+
+
+        login = (EditText) findViewById(R.id.idInputLogin);
+        password = (EditText) findViewById(R.id.idInputPassword);
 
         buttonLogin = findViewById(R.id.idButtonLogin);
         buttonLogin.setOnClickListener(new View.OnClickListener() {
@@ -49,6 +57,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public  void  onClickLogin(View view){
 
     }
 

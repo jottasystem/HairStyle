@@ -8,14 +8,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
 
+    private
     Context myContenxt;
     List<cardItem> mData;
 
+    public interface  onItemClickListener{
+        void onItemClicked(int position);
+    }
 
     public Adapter(Context myContenxt, List<cardItem> mData) {
         this.myContenxt = myContenxt;
@@ -27,7 +32,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
     public myViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 
         LayoutInflater inflater =  LayoutInflater.from(myContenxt);
-
         View v = inflater.inflate(R.layout.service_card_item,viewGroup,false);
 
         return new myViewHolder(v);
@@ -35,14 +39,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull myViewHolder myViewHolder, int position) {
-
-
-
         myViewHolder.imgCard.setImageResource(mData.get(position).getImgCard());
-
         myViewHolder.title.setText(mData.get(position).getTitle());
-
-
     }
 
     @Override
@@ -51,14 +49,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
     }
 
     public class myViewHolder extends RecyclerView.ViewHolder {
-
-
         ImageView imgCard ;
-
         TextView title;
-
-
-
 
         public myViewHolder(@NonNull View itemView) {
 
@@ -66,8 +58,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
 
             imgCard =  itemView.findViewById(R.id.card_background_image);
             title = itemView.findViewById(R.id.text_service);
-
-
         }
     }
+
+
 }

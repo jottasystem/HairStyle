@@ -8,6 +8,7 @@
     tools:context=".Core">
 
     <android.support.design.widget.NavigationView
+        android:id="@+id/navegation_drawer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:itemTextColor="@color/colorPurpleActive"

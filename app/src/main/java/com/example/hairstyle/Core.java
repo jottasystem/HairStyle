@@ -1,12 +1,16 @@
 package com.example.hairstyle;
 
+import android.content.Intent;
+import android.support.design.internal.NavigationMenuItemView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +21,10 @@ public class Core extends AppCompatActivity {
 
 private DrawerLayout myDrawer;
 private ActionBarDrawerToggle myToggle;
+private NavigationMenuItemView menuItemView;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +47,8 @@ private ActionBarDrawerToggle myToggle;
         recyclerView.setLayoutManager( new LinearLayoutManager(this));
 
 
+
+
         //Toggle
         myDrawer = findViewById(R.id.core_drawer);
         myToggle = new ActionBarDrawerToggle(this,myDrawer,R.string.open,R.string.close);
@@ -47,8 +57,9 @@ private ActionBarDrawerToggle myToggle;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-
     }
+
+
 
 
     //Toglle
@@ -59,6 +70,9 @@ private ActionBarDrawerToggle myToggle;
             return true;
         }
         return super.onOptionsItemSelected(item);
+
+
+
     }
 
 
