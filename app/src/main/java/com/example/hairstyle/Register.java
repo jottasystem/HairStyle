@@ -38,6 +38,11 @@ private EditText  input_name_register ,input_email_register ,input_login_registe
             public void onClick(View v) {
 
                 getPost();
+                input_name_register.getText().clear();
+                input_email_register.getText().clear();
+                input_login_register.getText().clear();
+                input_password_register.getText().clear();
+                input_check_password_register.getText().clear();
 
 
             }
@@ -50,9 +55,10 @@ private EditText  input_name_register ,input_email_register ,input_login_registe
         String username = input_login_register.getText().toString();
         String password = input_password_register.getText().toString();
         String endPoint = "https://demoope.herokuapp.com/api/usuarios";
+        String message = "Efetuando registro";
+        String backMessage = "Registro efetuado com sucesso!";
 
-
-        ServiceTask serviceTask = new ServiceTask(this,endPoint,name,username,password);
+        ServiceTask serviceTask = new ServiceTask(this,endPoint,name,username,password,message,backMessage);
         serviceTask.execute();
         Intent intent = new Intent(getApplicationContext(),MainActivity.class);
         startActivity(intent);

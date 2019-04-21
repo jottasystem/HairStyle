@@ -30,16 +30,21 @@ public class ServiceTask extends AsyncTask<Void, Void,String> {
     public String name;
     public String username;
     public String password;
+    public String comments;
 
+    public String message;
+    public String backMessage;
 
-
-    public ServiceTask(Context httpContext, String linkRequestApi, String name, String username, String password) {
+    public ServiceTask(Context httpContext, String linkRequestApi, String name, String username, String password,String message, String backMessage) {
         this.httpContext = httpContext;
         this.linkRequestApi = linkRequestApi;
 
         this.name = name;
         this.username = username;
         this.password= password;
+        this.message = message;
+        this.backMessage = backMessage;
+        this.comments= username;
 
     }
 
@@ -47,7 +52,7 @@ public class ServiceTask extends AsyncTask<Void, Void,String> {
     protected void onPreExecute(){
         super.onPreExecute();
 
-        progressDialog = ProgressDialog.show(httpContext,"Efetuando registro.","aguarde...");
+        progressDialog = ProgressDialog.show(httpContext,message,"aguarde...");
     }
 
 
@@ -68,7 +73,7 @@ public class ServiceTask extends AsyncTask<Void, Void,String> {
             parametroPost.put("name",name);
             parametroPost.put("username",username);
             parametroPost.put("password",password);
-
+            parametroPost.put("coment",comments);
             urlConnection.setReadTimeout(15000);
             urlConnection.setConnectTimeout(15000);
             urlConnection.setRequestMethod("POST");
@@ -128,7 +133,7 @@ public class ServiceTask extends AsyncTask<Void, Void,String> {
         super.onPostExecute(s);
         progressDialog.dismiss();
         resultApi = s;
-        Toast.makeText(httpContext, "Cadastro feito com sucesso",Toast.LENGTH_LONG).show(); //Notificacao de result
+        Toast.makeText(httpContext, backMessage,Toast.LENGTH_LONG).show(); //Notificacao de result
     }
 
 
