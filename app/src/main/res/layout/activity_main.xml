@@ -7,6 +7,17 @@
     android:background="@drawable/backgroundimage"
     tools:context=".MainActivity">
 
+
+
+    <RelativeLayout
+        android:id="@+id/loadingPanel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPurpleButton"
+        android:elevation="2dp"
+        android:visibility="gone"
+        android:gravity="center"/>
+
     <ImageView
         android:id="@+id/idImageLogo"
         android:layout_width="161dp"
