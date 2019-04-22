@@ -1,10 +1,8 @@
 package com.example.hairstyle;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -12,8 +10,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.RequestQueue;
+import com.android.volley.Request;
 import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
@@ -56,64 +56,10 @@ public class MainActivity extends AppCompatActivity {
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                     login_main = login.getText().toString();
                     password_main = password.getText().toString();
+                    getUser(login_main,password_main);
 
-
-
-                Intent intent = new Intent(MainActivity.this, home.class);
-                startActivity(intent);
-
-
-
-              /*  Response.Listener<String> responseListener = new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-
-                            System.out.println(" Request Data "+response.toString());
-
-                            boolean sucess = jsonObject.getBoolean("sucess");
-
-                            if(sucess){
-
-                                String name = jsonObject.getString("name");
-                                String username = jsonObject.getString("username");
-
-
-                                Intent intent = new Intent(MainActivity.this, home.class);
-                                intent.putExtra("name",name);
-                                intent.putExtra("username",username);
-
-                                MainActivity.this.startActivity(intent);
-
-                                //startActivity(intent);
-
-                            }else{
-                                AlertDialog.Builder builder =new AlertDialog.Builder(MainActivity.this);
-
-                                builder.setMessage("Usuario ou senha incorreto.")
-                                        .setNegativeButton("Retry",null)
-                                        .create().show();
-
-                            }
-                        } catch (JSONException e) {
-                            //e.printStackTrace();
-                        }
-                    }
-                };
-
-
-                LoginRequest loginRequest = new LoginRequest(login_main,password_main, responseListener);
-                RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
-                queue.add(loginRequest);
-
-
-*/
             }
         });
 
@@ -135,24 +81,47 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
 
+    private void getUser(String username, String password){
+
+        String url = "https://demoope.herokuapp.com/api/usuarios/"+username+"/"+password;
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            String userLogin = response.getString("status");
+
+                            if(userLogin == "true"){
+                                goToSecondActivity();
+                            }else{
+                                Toast.makeText(MainActivity.this, "Usuario ou senha incorreto.",Toast.LENGTH_LONG).show();
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                    }
+                });
+
+        Volley.newRequestQueue(this).add(request);
 
 
     }
-
-
-    /**
-     * Open a new activity window.
-     */
     private void goToSecondActivity() {
         Bundle bundle = new Bundle();
         bundle.putString("username", login_main);
-        bundle.putString("password", password_main);
-        bundle.putString("baseUrl", baseUrl);
 
         Intent intent = new Intent(this, home.class);
         intent.putExtras(bundle);
         startActivity(intent);
     }
-
 }
