@@ -25,15 +25,14 @@
         app:srcCompat="@drawable/logopink" />
 
     <TextView
-        android:id="@+id/idUserHeader"
+        android:id="@+id/id_name_header"
         android:layout_width="363dp"
         android:layout_height="27dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         android:fontFamily="sans-serif"
         android:foregroundGravity="center"
         android:gravity="center"
@@ -44,12 +43,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.809" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/id_text_bem_vindo"
         android:layout_width="159dp"
         android:layout_height="22dp"
         android:layout_marginStart="8dp"
@@ -66,7 +63,7 @@
         android:textColor="@color/colorWhite"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/idUserHeader"
+        app:layout_constraintBottom_toTopOf="@+id/id_name_header"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />

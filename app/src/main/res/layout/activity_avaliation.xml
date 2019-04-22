@@ -9,36 +9,18 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycle_list_comments"
         android:layout_width="match_parent"
-        android:layout_height="387dp"
+        android:layout_height="479dp"
         android:background="@color/colorPurpleButton"
         android:paddingLeft="8dp"
-        android:paddingRight="8dp">
+        android:paddingRight="8dp"
+        android:paddingBottom="10dp"
+        tools:layout_editor_absoluteX="-11dp">
 
     </android.support.v7.widget.RecyclerView>
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <EditText
-            android:id="@+id/id_input_comments"
-            android:layout_width="392dp"
-            android:layout_height="162dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="4dp"
-            android:backgroundTint="#00FFFFFF"
-            android:ems="10"
-            android:background="@drawable/mold_box_input_comments"
-            android:inputType="textPersonName"
-            android:hint="Adicionar Comentário..."
-            android:textColor="#C23AD8"
-            app:layout_constraintBottom_toTopOf="@+id/id_button_comit_comments"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/id_button_comit_comments"
@@ -55,6 +37,33 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/id_input_comments"
+            android:layout_width="372dp"
+            android:layout_height="58dp"
+            android:layout_marginStart="10dp"
+            android:elevation="1dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginEnd="4dp"
+            android:stateListAnimator="@null"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/mold_box_input_comments"
+            android:backgroundTint="#00FFFFFF"
+            android:ems="10"
+            android:theme="@style/Widget.AppCompat.EditText"
+            android:hint="Adicionar Comentário..."
+            android:inputType="text|textMultiLine"
+            android:lineSpacingExtra="5sp"
+            android:padding="5dp"
+            android:textAlignment="center"
+            android:textColor="#C23AD8"
+            android:typeface="normal"
+            app:layout_constraintBottom_toTopOf="@+id/id_button_comit_comments"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.24"
             app:layout_constraintStart_toStartOf="parent" />
     </android.support.constraint.ConstraintLayout>
 </RelativeLayout>

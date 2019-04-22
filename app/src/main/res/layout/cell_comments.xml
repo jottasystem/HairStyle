@@ -39,16 +39,15 @@
                 tools:text="Laura Souza" />
 
             <RatingBar
-                android:id="@+id/rating_start_comments"
+                android:id="@+id/id_rating_start_comments"
                 android:layout_width="241dp"
                 android:layout_height="42dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
-                android:numStars="2"
-                android:rating="2"
-                android:stepSize="2"
+                android:numStars="5"
+                android:rating="5"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -56,24 +55,31 @@
 
             <TextView
                 android:id="@+id/id_text_desc_comments"
-                android:layout_width="382dp"
-                android:layout_height="69dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
+                android:layout_width="342dp"
+                android:layout_height="52dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
-                android:foregroundGravity="center_vertical|center"
-                android:gravity="center|start"
+                android:foregroundGravity="center|center_horizontal"
+                android:gravity="center"
                 android:letterSpacing="0.03"
                 android:lineSpacingExtra="-1sp"
                 android:text="@string/comments"
                 android:textColor="#310E31"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rating_start_comments"
+                app:layout_constraintTop_toBottomOf="@id/id_rating_start_comments"
                 tools:targetApi="lollipop" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="20dp" />
         </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>
 </LinearLayout>

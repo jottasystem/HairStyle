@@ -37,7 +37,6 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHo
     @Override
     public void onBindViewHolder( ViewHolder viewHolder, int i) {
         ListItemComments listComment =  listItemComments.get(i);
-
         viewHolder.textViewNameTitular.setText(listComment.getName_comments());
         viewHolder.textViewComments.setText(listComment.getDesc_comments());
         viewHolder.ratingBarComments.setNumStars(listComment.getRating_star());
@@ -61,7 +60,7 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHo
 
             textViewNameTitular = (TextView) itemView.findViewById(R.id.name_titular_comments);
             textViewComments = (TextView) itemView.findViewById(R.id.id_text_desc_comments);
-            ratingBarComments = (RatingBar) itemView.findViewById(R.id.rating_start_comments);
+            ratingBarComments = (RatingBar) itemView.findViewById(R.id.id_rating_start_comments);
 
         }
     }

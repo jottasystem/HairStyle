@@ -58,7 +58,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                     login_main = login.getText().toString();
                     password_main = password.getText().toString();
-                    getUser(login_main,password_main);
+
+                    if(login_main.isEmpty() || password_main.isEmpty()){
+                        Toast.makeText(MainActivity.this, "Preencha Login e Senha.",Toast.LENGTH_LONG).show();
+
+                    }else{
+                        getUser(login_main,password_main);
+                    }
 
             }
         });
@@ -117,11 +123,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
     private void goToSecondActivity() {
-        Bundle bundle = new Bundle();
-        bundle.putString("username", login_main);
 
         Intent intent = new Intent(this, home.class);
-        intent.putExtras(bundle);
+        Bundle data = new Bundle();
+        data.putString("username", login_main);
+        intent.putExtras(data);
+
         startActivity(intent);
     }
 }

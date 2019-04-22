@@ -1,14 +1,16 @@
 package com.example.hairstyle;
 
-import android.os.AsyncTask;
+import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RatingBar;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -21,11 +23,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import okhttp3.OkHttpClient;
 
 public class Avaliation extends AppCompatActivity {
 
@@ -36,28 +36,37 @@ public class Avaliation extends AppCompatActivity {
     private RequestQueue mRequestQueue;
     private EditText input_comments;
     private Button buttonCommit;
-
+    private RatingBar numberStart;
+    public String userName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_avaliation);
 
+        Intent dados = getIntent();
+        Bundle data = dados.getExtras();
 
+        if (data != null) {
+            String tryName = dados.getStringExtra("username");
+            System.out.println("OIIIIAAA"+tryName);
+        } else {
+            userName = "Impacta";
+
+        }
 
         recyclerView = (RecyclerView) findViewById(R.id.recycle_list_comments);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-
         input_comments  = findViewById(R.id.id_input_comments);
 
+        numberStart = findViewById(R.id.id_rating_start_comments);
         buttonCommit = findViewById(R.id.id_button_comit_comments);
-
         buttonCommit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                getPost();
+                getPost(userName,input_comments.getText().toString());
                 input_comments.getText().clear();
 
             }
@@ -68,43 +77,21 @@ public class Avaliation extends AppCompatActivity {
 
 
         objListItemComments = new ArrayList<>();
-
-
         mRequestQueue = Volley.newRequestQueue(this);
 
         parseJSON();
 
-
-
-
-      /*  for( int i = 0 ; i <=10 ; i++) {
-            ListItemComments listComment = new ListItemComments(
-                    "Nome de quem comentou " + (i + 1),
-                    "Comentario" + (i + 1),
-                    3
-            );
-
-            //AQUI VEM O OBJETO DE COMENTARIOS DENTRO DO LIST COMMENTS
-            objListItemComments.add(listComment);
-        }
-*/
-
-
-       // adapter = new CommentsAdapter(objListItemComments,this);
-       // recyclerView.setAdapter(adapter);
-
-
     }
 
-    public void getPost (){
-        String name = "Jotta";
-        String comments = input_comments.getText().toString();
-        String rate = "5";
+    public void getPost (String name,String comments){
+        String rate = "2";
         String endPoint = "https://demoope.herokuapp.com/api/comentarios";
         String message = "Comentando ...";
         String backMessage = "Comentário feito com sucesso !";
-        ServiceTask serviceTask = new ServiceTask(this,endPoint,name,comments,rate,message,backMessage);
+
+        ServiceTaskComments serviceTask = new ServiceTaskComments(this,endPoint,name,comments,rate,message,backMessage);
         serviceTask.execute();
+        parseJSON();
     }
 
     private void parseJSON(){
@@ -119,31 +106,23 @@ public class Avaliation extends AppCompatActivity {
                                 JSONObject comments = jsonArray.getJSONObject(i);
 
                                 String creatorName = comments.getString("name");
-
                                 String commentsPost = comments.getString("coment");
 
-
                                 int ratingStar = comments.getInt("rate");
-                                System.out.println("REQUESTTTTT PARSEJSON"+ratingStar);
 
                                 ListItemComments listComment = new ListItemComments(
                                        creatorName,
                                        commentsPost,
-                                      ratingStar
+                                       ratingStar
                                 );
-
-
-                                //ListItemComments listComment = new ListItemComments(
-                                  //      "Nome de quem comentou " + (i + 1),
-                                   //     "Comentario" + (i + 1),
-                                   //     3
-                              // );
-
 
 
                                 objListItemComments.add(listComment);
                                 adapter = new CommentsAdapter(objListItemComments,Avaliation.this);
                                 recyclerView.setAdapter(adapter);
+
+                                input_comments.getText().clear();
+
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -162,3 +141,4 @@ public class Avaliation extends AppCompatActivity {
 
 
 }
+

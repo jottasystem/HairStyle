@@ -20,7 +20,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Iterator;
 
-public class ServiceTask extends AsyncTask<Void, Void,String> {
+public class ServiceTaskComments extends AsyncTask<Void, Void,String> {
 
     private Context httpContext; // Contexto
     ProgressDialog progressDialog; // Mensagem de carregando
@@ -28,23 +28,21 @@ public class ServiceTask extends AsyncTask<Void, Void,String> {
     public String linkRequestApi= ""; //Link para consumir serviço
 
     public String name;
-    public String username;
-    public String password;
     public String comments;
+    public String rate;
 
     public String message;
     public String backMessage;
-    public String rate;
 
 
-    public ServiceTask(Context httpContext, String linkRequestApi, String name, String username, String password,String message, String backMessage) {
+
+    public ServiceTaskComments(Context httpContext, String linkRequestApi, String name, String comments, String rate, String message, String backMessage) {
         this.httpContext = httpContext;
         this.linkRequestApi = linkRequestApi;
 
         this.name = name;
-        this.username = username;
-        this.password= password;
-        this.message = message;
+        this.comments = comments;
+        this.rate = rate;
         this.backMessage = backMessage;
 
     }
@@ -67,13 +65,20 @@ public class ServiceTask extends AsyncTask<Void, Void,String> {
 
         try {
 
+            if(name == null) name = "Usuario não encontrado";
+
             url = new URL(wsURL);
             //Paramentros de integracao
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
             JSONObject parametroPost = new JSONObject();
             parametroPost.put("name",name);
-            parametroPost.put("username",username);
-            parametroPost.put("password",password);
+            System.out.println("postandoo name"+name);
+            parametroPost.put("coment",comments);
+            System.out.println("postandoo comments "+comments);
+
+            parametroPost.put("rate",Integer.parseInt(rate));
+            System.out.println("postandoo rate "+rate);
+
 
             urlConnection.setReadTimeout(15000);
             urlConnection.setConnectTimeout(15000);
