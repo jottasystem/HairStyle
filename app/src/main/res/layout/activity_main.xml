@@ -207,4 +207,26 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/idTextFooterRegister" />
 
+    <CheckBox
+        android:id="@+id/id_checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:backgroundTint="@color/colorWhite"
+        android:text="Lembrar-me"
+        android:textColor="#FFF"
+        android:textColorHighlight="#F7E7E7"
+        android:textColorHint="#F5E2E2"
+        android:textColorLink="#ECF3F5"
+        app:layout_constraintBottom_toTopOf="@+id/idTextFooterRegister"
+        app:layout_constraintEnd_toStartOf="@+id/idTextForgotPassword"
+        app:layout_constraintHorizontal_bias="0.137"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/id_input_password"
+        app:layout_constraintVertical_bias="0.247" />
+
 </android.support.constraint.ConstraintLayout>

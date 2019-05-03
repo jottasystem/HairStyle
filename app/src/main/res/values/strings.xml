@@ -54,6 +54,14 @@
     <string name="login">Login</string>
     <string name="salvar">SALVAR</string>
     <string name="confirmar_senha">Confirmar Senha</string>
+
+
+    <string name="checkbox">com.example.hairstyle.checkbox</string>
+    <string name="name">com.example.hairstyle.name</string>
+    <string name="password">com.example.hairstyle.password</string>
+
+
+
 </resources>
 
 
