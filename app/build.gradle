@@ -43,4 +43,11 @@ dependencies {
 
     implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.4'
 
+
+    //firebase
+    implementation 'com.google.firebase:firebase-core:16.0.1'
+    implementation 'com.google.firebase:firebase-messaging:17.4.0'
+
 }
+
+apply plugin: 'com.google.gms.google-services'

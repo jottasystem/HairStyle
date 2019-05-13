@@ -1,6 +1,8 @@
 package com.example.hairstyle;
 
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,10 +11,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.hairstyle.CRUD.Create;
+import com.example.hairstyle.CRUD.Insert;
+
 public class Register extends AppCompatActivity {
 
     private Button buttonRegister;
-private EditText  input_name_register ,input_email_register ,input_login_register,input_password_register,input_check_password_register;
+    private EditText  input_name_register ,input_email_register ,input_login_register,input_password_register,input_check_password_register;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,16 +25,19 @@ private EditText  input_name_register ,input_email_register ,input_login_registe
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Cadastro");
 
+        Create c = new Create(getApplicationContext());
 
-        input_name_register  = findViewById(R.id.id_input_name_register);
+        c.createTable();
 
-        input_email_register  = findViewById(R.id.id_input_email_register);
+        input_name_register  = (EditText) findViewById(R.id.id_input_name_register);
 
-        input_login_register = findViewById(R.id.id_input_login_register);
+        input_email_register  = (EditText) findViewById(R.id.id_input_email_register);
 
-        input_password_register = findViewById(R.id.id_input_password_register);
+        input_login_register = (EditText)  findViewById(R.id.id_input_login_register);
 
-        input_check_password_register = findViewById(R.id.id_input_check_password);
+        input_password_register = (EditText) findViewById(R.id.id_input_password_register);
+
+        input_check_password_register = (EditText)  findViewById(R.id.id_input_check_password);
 
 
         buttonRegister = findViewById(R.id.idButtonSave);
@@ -37,16 +45,41 @@ private EditText  input_name_register ,input_email_register ,input_login_registe
             @Override
             public void onClick(View v) {
 
-                getPost();
-                input_name_register.getText().clear();
-                input_email_register.getText().clear();
-                input_login_register.getText().clear();
-                input_password_register.getText().clear();
-                input_check_password_register.getText().clear();
+                if(haveConnection()){
+                     getPost();
+                    input_name_register.getText().clear();
+                    input_email_register.getText().clear();
+                    input_login_register.getText().clear();
+                    input_password_register.getText().clear();
+                    input_check_password_register.getText().clear();
 
+                }else if (!haveConnection()){
+                    Toast.makeText(Register.this, "Você não está conectado com internet, seus dados serão salvado localmente.",Toast.LENGTH_SHORT).show();
 
+                    Pessoa p =  new Pessoa();
+                    p.setNome(input_name_register.getText().toString());
+                    p.setLogin(input_login_register.getText().toString());
+                    p.setPassword(input_password_register.getText().toString());
+
+                    System.out.println("OLHAAA"+ p);
+                    Toast.makeText(Register.this, "Dados salvos, Nome: "+p.getNome()+"Login: "+p.getLogin(),Toast.LENGTH_SHORT).show();
+
+                    Insert i =  new Insert(getApplicationContext());
+
+                    i.insertPessoa(p);
+
+                    if( i.insertPessoa(p)){
+                        Toast.makeText(Register.this, "Dados salvos localmente com sucesso",Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                        startActivity(intent);
+                    }else{
+                        Toast.makeText(Register.this, "Erro ao salvar dados",Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
         });
+
+
     }
 
     public void getPost (){
@@ -64,4 +97,28 @@ private EditText  input_name_register ,input_email_register ,input_login_registe
         startActivity(intent);
 
     }
+
+    private  boolean  haveConnection(){
+        boolean have_Wifi = false;
+        boolean have_Mobile_Data = false;
+
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+
+        NetworkInfo[] networkInfos = connectivityManager.getAllNetworkInfo();
+
+        for( NetworkInfo info:networkInfos){
+            if(info.getTypeName().equalsIgnoreCase("WIFI"))
+                if(info.isConnected())
+                have_Wifi=true;
+
+            if(info.getTypeName().equalsIgnoreCase("MOBILE"))
+                if(info.isConnected())
+                have_Mobile_Data =  true;
+
+        }
+
+         return have_Mobile_Data || have_Wifi;
+
+    }
+
 }

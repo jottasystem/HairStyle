@@ -3,6 +3,9 @@ package com.example.hairstyle;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.preference.PreferenceManager;
@@ -20,9 +23,18 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.hairstyle.CRUD.Create;
+import com.example.hairstyle.CRUD.Insert;
+import com.example.hairstyle.CRUD.Read;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -38,11 +50,17 @@ public class MainActivity extends AppCompatActivity {
     TextView textRegisterClick;
     TextView textForgotPassword;
     EditText login, password;
+    String token;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
+        token= FirebaseInstanceId.getInstance().getToken();
 
         if (android.os.Build.VERSION.SDK_INT > 9)
         {
@@ -82,11 +100,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
-
-
-                if(login_main.isEmpty() || password_main.isEmpty()){
+                if(haveConnection()){
+                    if(login_main.isEmpty() || password_main.isEmpty()){
                         Toast.makeText(MainActivity.this, "Preencha Login e Senha.",Toast.LENGTH_LONG).show();
 
                     }else{
@@ -119,9 +134,27 @@ public class MainActivity extends AppCompatActivity {
                             mEditor.commit();
                         }
                         getUser(login_main,password_main);
+                        new Notify().execute();
 
                     }
 
+                }
+                else if (!haveConnection()){
+
+                    System.out.println("ENTROUuu n tem net");
+
+                    Read r = new Read(getApplicationContext());
+
+                    Toast.makeText(MainActivity.this, "Não possui internet, se  possuir dados locamente você poderar efetuar o login",Toast.LENGTH_LONG).show();
+
+                    ArrayList<Pessoa> pessoaArrayList = r.getPessoas();
+
+                 if(pessoaArrayList.size() >= 0){
+                     Intent intent = new Intent(getApplicationContext(),home.class);
+                     startActivity(intent);
+
+                    }
+                 }
             }
         });
 
@@ -160,11 +193,50 @@ public class MainActivity extends AppCompatActivity {
             checkBox.setChecked(false);
         }
 
-
     }
 
+    public class Notify extends AsyncTask<Void,Void,Void>{
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            try {
+
+                URL url = new URL("https://fcm.googleapis.com/fcm/send");
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+                conn.setUseCaches(false);
+                conn.setDoInput(true);
+                conn.setDoOutput(true);
+
+                conn.setRequestMethod("POST");
+                conn.setRequestProperty("Authorization","key=AIzaSyCj7uQeDptKH2Nt4_iR2H47tsglxdTHWYo");
+                conn.setRequestProperty(" -Type", "application/json");
+
+                JSONObject json = new JSONObject();
+
+                json.put("to", token);
 
 
+                JSONObject info = new JSONObject();
+                info.put("title", "HairStyle");   // Notification title
+                info.put("body", "Entre em contato com nosso salão para ganhar desconto em nossa promoção dos dias da Mãe"); // Notification body
+
+                json.put("notification", info);
+
+                OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+                wr.write(json.toString());
+                wr.flush();
+                conn.getInputStream();
+
+            }
+            catch (Exception e)
+            {
+                Log.d("Error",""+e);
+            }
+
+            return null;
+        }
+    }
 
 
     private void getUser(String username, String password){
@@ -206,7 +278,30 @@ public class MainActivity extends AppCompatActivity {
         Bundle data = new Bundle();
         data.putString("username", login_main);
         intent.putExtras(data);
-
         startActivity(intent);
+    }
+
+
+    private  boolean  haveConnection(){
+        boolean have_Wifi = false;
+        boolean have_Mobile_Data = false;
+
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+
+        NetworkInfo[] networkInfos = connectivityManager.getAllNetworkInfo();
+
+        for( NetworkInfo info:networkInfos){
+            if(info.getTypeName().equalsIgnoreCase("WIFI"))
+                if(info.isConnected())
+                    have_Wifi=true;
+
+            if(info.getTypeName().equalsIgnoreCase("MOBILE"))
+                if(info.isConnected())
+                    have_Mobile_Data =  true;
+
+        }
+
+        return have_Mobile_Data || have_Wifi;
+
     }
 }
