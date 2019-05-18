@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     TextView textRegisterClick;
     TextView textForgotPassword;
     EditText login, password;
-    String token;
+    String tkn;
 
 
     @Override
@@ -60,7 +60,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        token= FirebaseInstanceId.getInstance().getToken();
+        tkn= FirebaseInstanceId.getInstance().getToken();
+
+        System.out.println("TOKEN"+tkn);
 
         if (android.os.Build.VERSION.SDK_INT > 9)
         {
@@ -133,8 +135,10 @@ public class MainActivity extends AppCompatActivity {
                             mEditor.putString(getString(R.string.password),"");
                             mEditor.commit();
                         }
-                        getUser(login_main,password_main);
                         new Notify().execute();
+
+                        getUser(login_main,password_main);
+
 
                     }
 
@@ -209,12 +213,12 @@ public class MainActivity extends AppCompatActivity {
                 conn.setDoOutput(true);
 
                 conn.setRequestMethod("POST");
-                conn.setRequestProperty("Authorization","key=AIzaSyCj7uQeDptKH2Nt4_iR2H47tsglxdTHWYo");
+                conn.setRequestProperty("Authorization", "key=AIzaSyCfuOEIvgHSZ8ml4_PDOVfE8DZS4Afb53M");
                 conn.setRequestProperty(" -Type", "application/json");
 
                 JSONObject json = new JSONObject();
 
-                json.put("to", token);
+                json.put("to", tkn);
 
 
                 JSONObject info = new JSONObject();
@@ -273,7 +277,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
     private void goToSecondActivity() {
-
         Intent intent = new Intent(this, home.class);
         Bundle data = new Bundle();
         data.putString("username", login_main);

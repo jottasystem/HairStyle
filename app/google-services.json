@@ -1,34 +1,42 @@
 {
   "project_info": {
-    "project_number": "464779578928",
-    "firebase_url": "https://hairstyleope.firebaseio.com",
-    "project_id": "hairstyleope",
-    "storage_bucket": "hairstyleope.appspot.com"
+    "project_number": "834147968487",
+    "firebase_url": "https://hairstyle-si.firebaseio.com",
+    "project_id": "hairstyle-si",
+    "storage_bucket": "hairstyle-si.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:464779578928:android:a54f0b30dce46779",
+        "mobilesdk_app_id": "1:834147968487:android:a54f0b30dce46779",
         "android_client_info": {
           "package_name": "com.example.hairstyle"
         }
       },
       "oauth_client": [
         {
-          "client_id": "464779578928-8te7q5507n6n5guluhsk8dftctkufvjg.apps.googleusercontent.com",
+          "client_id": "834147968487-c70agl97cbf2dfnde9s4s69ha6ph67rf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hairstyle",
+            "certificate_hash": "42b6b57282b3ee814bdce9b12a14cb73105a0ae5"
+          }
+        },
+        {
+          "client_id": "834147968487-tffo0lgu10nrlq06dg69n2ec0roouebp.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAyhjClCapmrIzJvKu4XzBPWeUEhEm30vA"
+          "current_key": "AIzaSyCKudCBXVZ8pxUPNZFQxDxGOwEBvzItUqg"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "464779578928-8te7q5507n6n5guluhsk8dftctkufvjg.apps.googleusercontent.com",
+              "client_id": "834147968487-tffo0lgu10nrlq06dg69n2ec0roouebp.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

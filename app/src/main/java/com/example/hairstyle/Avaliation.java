@@ -143,8 +143,6 @@ public class Avaliation extends AppCompatActivity {
                                 adapter = new CommentsAdapter(objListItemComments,Avaliation.this);
                                 recyclerView.setAdapter(adapter);
 
-
-
                                 input_comments.getText().clear();
 
                             }

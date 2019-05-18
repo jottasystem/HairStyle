@@ -47,14 +47,13 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".FireIDService"
-            android:exported="false">
+        <service android:name=".FireIDService" android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
-        <service android:name=".FireBaseMsgService"
-            android:exported="false">
+
+        <service android:name=".FireBaseMsgService" android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
