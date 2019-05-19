@@ -1,5 +1,8 @@
 package com.example.hairstyle;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -7,9 +10,12 @@ import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.preference.PreferenceManager;
+import android.provider.Settings;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -41,6 +47,8 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     DBAdapter DB;
     private static final String TAG = "MainActivity";
+    private NotificationCompat.Builder mBuilder;
+    private NotificationManager nNotificationManager;
     private Button buttonLogin;
     private String login_main;
     private String password_main;
@@ -136,7 +144,6 @@ public class MainActivity extends AppCompatActivity {
                             mEditor.putString(getString(R.string.password),"");
                             mEditor.commit();
                         }
-                        new Notify().execute();
                         Toast.makeText(MainActivity.this, "Não possui internet, se  possuir dados locamente você poderar efetuar o login",Toast.LENGTH_LONG).show();
                         getUser(login_main,password_main);
                     }
@@ -203,53 +210,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public class Notify extends AsyncTask<Void,Void,Void>
-    {
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-
-
-            try {
-
-                URL url = new URL("https://fcm.googleapis.com/fcm/send");
-                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-
-                conn.setUseCaches(false);
-                conn.setDoInput(true);
-                conn.setDoOutput(true);
-                String apiToken = "key=AIzaSyCfuOEIvgHSZ8ml4_PDOVfE8DZS4Afb53M";
-                conn.setRequestMethod("POST");
-                conn.setRequestProperty("Authorization", apiToken);
-                conn.setRequestProperty("Content-Type", "application/json");
-
-                JSONObject json = new JSONObject();
-
-                json.put("to", tkn);
-
-
-                JSONObject info = new JSONObject();
-                info.put("title", "HairStyle");   // Notification title
-                info.put("body", "Bem vindo ao HairStyle"); // Notification body
-
-                json.put("notification", info);
-
-                OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
-                wr.write(json.toString());
-                wr.flush();
-                conn.getInputStream();
-
-            }
-            catch (Exception e)
-            {
-                Log.d("Error",""+e);
-            }
-
-
-            return null;
-        }
-    }
-
 
     private void getUser(String username, String password){
 
@@ -285,6 +245,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     private void goToSecondActivity() {
+        ShowNotify();
         Intent intent = new Intent(this, home.class);
         Bundle data = new Bundle();
         data.putString("username", login_main);
@@ -315,4 +276,44 @@ public class MainActivity extends AppCompatActivity {
         return have_Mobile_Data || have_Wifi;
 
     }
+
+    public void ShowNotify(){
+
+        Intent resultIntent = new Intent(this,MainActivity.class);
+        resultIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        PendingIntent resultPeddingIntent =  PendingIntent.getActivity(this,0,resultIntent,PendingIntent.FLAG_UPDATE_CURRENT);
+        mBuilder =  new NotificationCompat.Builder(this);
+        mBuilder.setSmallIcon(R.drawable.ic_account);
+        mBuilder.setContentTitle("HairStyle")
+                .setContentText("Bem vindo ao salão HairStyle")
+                .setAutoCancel(false)
+                .setSound(Settings.System.DEFAULT_NOTIFICATION_URI)
+                .setContentIntent(resultPeddingIntent);
+        System.out.println("entrou no show");
+
+        nNotificationManager =  (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            int importante = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel notificationChannel = new NotificationChannel("12345","HairStyle",importante);
+            notificationChannel.enableLights(false);
+            notificationChannel.enableVibration(false);
+            assert nNotificationManager != null;
+            mBuilder.setChannelId("12345");
+            nNotificationManager.createNotificationChannel(notificationChannel);
+
+            System.out.println("entrou no show nNotificationManager" );
+
+        }
+
+        assert  nNotificationManager!=null;
+        nNotificationManager.notify(0,mBuilder.build());
+        System.out.println("0,mBuilder.build() nNotificationManager" );
+
+
+    }
+
+
+
 }

@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBAdapter extends SQLiteOpenHelper {
 
-    private static String DATABASE_NAME = "mydatabase.sqllite";
+    private static String DATABASE_NAME = "com.example.hairstyle.sqllite";
     public static final String TAG = "MyTAG";
     public static final int SCHEMA_VERSION =1;
 
