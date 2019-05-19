@@ -212,7 +212,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void getUser(String username, String password){
-
+       new  Notify();
         String url = "https://demoope.herokuapp.com/api/usuarios/"+username+"/"+password;
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
@@ -314,5 +314,51 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public class Notify extends AsyncTask<Void,Void,Void>
+    {
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+
+
+            try {
+
+                URL url = new URL("https://fcm.googleapis.com/fcm/send");
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+                conn.setUseCaches(false);
+                conn.setDoInput(true);
+                conn.setDoOutput(true);
+
+                conn.setRequestMethod("POST");
+                conn.setRequestProperty("Authorization","key=AIzaSyCfuOEIvgHSZ8ml4_PDOVfE8DZS4Afb53M");
+                conn.setRequestProperty("Content-Type", "application/json");
+
+                JSONObject json = new JSONObject();
+
+                json.put("to", tkn);
+
+
+                JSONObject info = new JSONObject();
+                info.put("title", "HairStyle");   // Notification title
+                info.put("body", "Promoção dias dos namorados, preços imbativeis."); // Notification body
+
+                json.put("notification", info);
+
+                OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+                wr.write(json.toString());
+                wr.flush();
+                conn.getInputStream();
+
+            }
+            catch (Exception e)
+            {
+                Log.d("Error",""+e);
+            }
+
+
+            return null;
+        }
+    }
 
 }

@@ -27,10 +27,10 @@ public class FireBaseMsgService  extends FirebaseMessagingService
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
 
-        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, "HairStyle")
-                .setSmallIcon(R.drawable.ic_launcher_background)
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, "12345")
+                .setSmallIcon(R.drawable.calendaricon)
                 .setContentTitle(remoteMessage.getNotification().getTitle())
-                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher_background))
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.logopink))
                 .setContentText(remoteMessage.getNotification().getBody())
                 .setAutoCancel(true)
                 .setColor(0xffff7700)
