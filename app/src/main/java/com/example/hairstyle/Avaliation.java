@@ -44,6 +44,7 @@ public class Avaliation extends AppCompatActivity {
     private Button buttonCommit;
     private RatingBar numberStart;
     public String userName;
+
     private  List<ListItemComments> objNoNewtwork;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

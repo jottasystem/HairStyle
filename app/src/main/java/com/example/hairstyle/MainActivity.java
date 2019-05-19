@@ -3,6 +3,7 @@ package com.example.hairstyle;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -38,7 +39,7 @@ import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
-
+    DBAdapter DB;
     private static final String TAG = "MainActivity";
     private Button buttonLogin;
     private String login_main;
@@ -61,8 +62,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         tkn= FirebaseInstanceId.getInstance().getToken();
+        Log.d("Not","Token => ["+tkn+"]");
 
-        System.out.println("TOKEN"+tkn);
 
         if (android.os.Build.VERSION.SDK_INT > 9)
         {
@@ -136,28 +137,17 @@ public class MainActivity extends AppCompatActivity {
                             mEditor.commit();
                         }
                         new Notify().execute();
-
+                        Toast.makeText(MainActivity.this, "Não possui internet, se  possuir dados locamente você poderar efetuar o login",Toast.LENGTH_LONG).show();
                         getUser(login_main,password_main);
-
-
                     }
 
                 }
                 else if (!haveConnection()){
 
                     System.out.println("ENTROUuu n tem net");
+                    loadData(login_main,password_main);
 
-                    Read r = new Read(getApplicationContext());
 
-                    Toast.makeText(MainActivity.this, "Não possui internet, se  possuir dados locamente você poderar efetuar o login",Toast.LENGTH_LONG).show();
-
-                    ArrayList<Pessoa> pessoaArrayList = r.getPessoas();
-
-                 if(pessoaArrayList.size() >= 0){
-                     Intent intent = new Intent(getApplicationContext(),home.class);
-                     startActivity(intent);
-
-                    }
                  }
             }
         });
@@ -182,6 +172,20 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void loadData(String login, String password){
+        goToSecondActivity();
+        try{
+            Cursor mdata = DB.callData(login,password);
+            System.out.println("DATAAAA "+mdata.getCount());
+
+
+
+        }catch  (Exception e) {
+            Log.d("ERROOOO LOGIN",""+e);
+        }
+
+
+    };
 
     private  void checkSharedPreferences (){
        String checkbox = mPreferences.getString(getString(R.string.checkbox),"false");
@@ -199,10 +203,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public class Notify extends AsyncTask<Void,Void,Void>{
+    public class Notify extends AsyncTask<Void,Void,Void>
+    {
 
         @Override
         protected Void doInBackground(Void... voids) {
+
+
             try {
 
                 URL url = new URL("https://fcm.googleapis.com/fcm/send");
@@ -211,10 +218,10 @@ public class MainActivity extends AppCompatActivity {
                 conn.setUseCaches(false);
                 conn.setDoInput(true);
                 conn.setDoOutput(true);
-
+                String apiToken = "key=AIzaSyCfuOEIvgHSZ8ml4_PDOVfE8DZS4Afb53M";
                 conn.setRequestMethod("POST");
-                conn.setRequestProperty("Authorization", "key=AIzaSyCfuOEIvgHSZ8ml4_PDOVfE8DZS4Afb53M");
-                conn.setRequestProperty(" -Type", "application/json");
+                conn.setRequestProperty("Authorization", apiToken);
+                conn.setRequestProperty("Content-Type", "application/json");
 
                 JSONObject json = new JSONObject();
 
@@ -223,7 +230,7 @@ public class MainActivity extends AppCompatActivity {
 
                 JSONObject info = new JSONObject();
                 info.put("title", "HairStyle");   // Notification title
-                info.put("body", "Entre em contato com nosso salão para ganhar desconto em nossa promoção dos dias da Mãe"); // Notification body
+                info.put("body", "Bem vindo ao HairStyle"); // Notification body
 
                 json.put("notification", info);
 
@@ -237,6 +244,7 @@ public class MainActivity extends AppCompatActivity {
             {
                 Log.d("Error",""+e);
             }
+
 
             return null;
         }

@@ -1,6 +1,7 @@
 package com.example.hairstyle;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.v7.app.ActionBar;
@@ -15,7 +16,8 @@ import com.example.hairstyle.CRUD.Create;
 import com.example.hairstyle.CRUD.Insert;
 
 public class Register extends AppCompatActivity {
-
+    DBAdapter DB;
+    public static final String TAG = "MyTAG";
     private Button buttonRegister;
     private EditText  input_name_register ,input_email_register ,input_login_register,input_password_register,input_check_password_register;
     @Override
@@ -40,6 +42,11 @@ public class Register extends AppCompatActivity {
         input_check_password_register = (EditText)  findViewById(R.id.id_input_check_password);
 
 
+
+        DB = new DBAdapter(getBaseContext());
+
+
+
         buttonRegister = findViewById(R.id.idButtonSave);
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,30 +63,32 @@ public class Register extends AppCompatActivity {
                 }else if (!haveConnection()){
                     Toast.makeText(Register.this, "Você não está conectado com internet, seus dados serão salvado localmente.",Toast.LENGTH_SHORT).show();
 
-                    Pessoa p =  new Pessoa();
-                    p.setNome(input_name_register.getText().toString());
-                    p.setLogin(input_login_register.getText().toString());
-                    p.setPassword(input_password_register.getText().toString());
+;
 
-                    System.out.println("OLHAAA"+ p);
-                    Toast.makeText(Register.this, "Dados salvos, Nome: "+p.getNome()+"Login: "+p.getLogin(),Toast.LENGTH_SHORT).show();
+                        inserData();
 
-                    Insert i =  new Insert(getApplicationContext());
 
-                    i.insertPessoa(p);
 
-                    if( i.insertPessoa(p)){
-                        Toast.makeText(Register.this, "Dados salvos localmente com sucesso",Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                        startActivity(intent);
-                    }else{
-                        Toast.makeText(Register.this, "Erro ao salvar dados",Toast.LENGTH_SHORT).show();
-                    }
+
                 }
             }
         });
 
 
+    }
+
+
+
+
+    public  void inserData(){
+        if(input_login_register.getText().toString()  != "" || input_password_register.getText().toString()  != "" ){
+            System.out.println("ENTROu");
+            DB.inserUser(input_login_register.getText().toString(),input_password_register.getText().toString());
+            Toast.makeText(Register.this, "Salvo localmente",Toast.LENGTH_SHORT).show();
+             Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+
+            startActivity(intent);
+        }
     }
 
     public void getPost (){
