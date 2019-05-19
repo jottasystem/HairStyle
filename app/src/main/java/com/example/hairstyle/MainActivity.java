@@ -278,7 +278,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void ShowNotify(){
-
         Intent resultIntent = new Intent(this,MainActivity.class);
         resultIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
@@ -286,7 +285,7 @@ public class MainActivity extends AppCompatActivity {
         mBuilder =  new NotificationCompat.Builder(this);
         mBuilder.setSmallIcon(R.drawable.ic_account);
         mBuilder.setContentTitle("HairStyle")
-                .setContentText("Bem vindo ao salão HairStyle")
+                .setContentText("Bem vindo ao salao HairStyle")
                 .setAutoCancel(false)
                 .setSound(Settings.System.DEFAULT_NOTIFICATION_URI)
                 .setContentIntent(resultPeddingIntent);
